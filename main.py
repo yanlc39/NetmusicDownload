@@ -48,6 +48,9 @@ class NetMusicGUI(object):
         urlretrieve(songDownload_Url, path)
 
     def getList(self):
+        self.text.delete(0, END)
+        self.music_list = {}
+        self.music_dict = {}
         self.url = self.entry.get().replace('/#', '')
         result = requests.get(self.url, headers=self.header)
         r = BeautifulSoup(result.text, 'html.parser')
